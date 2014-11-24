@@ -1,0 +1,59 @@
+<!DOCUTYPE>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>Multi-Independent jQuery Modal Windows</title>
+	<link href="jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+<h1>Multi-Independent jQuery Modal Windows</h1>
+<br>
+<a class="modal" href="#">Example 1</a>
+      <div class="dialog" title="Example 1"><p>Some Text 1</p></div>
+<span></span>
+<a class="modal" href="#">Example 2</a>
+    <div class="dialog" title="Example 2"><p>Some Text 2</p></div>
+<span></span>
+<input type="button" class="modal" value="Example 3">
+	<div class="dialog" title="Example 3"><p>Some Text 3</p></div>
+	<script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script>
+		$( "#dialog" ).dialog({
+				autoOpen: false,
+				width: 400,
+				buttons: [
+					{
+						text: "Ok",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					},
+					{
+						text: "Cancel",
+						click: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				]
+			});
+			
+			// Link control to open the dialog box
+			$( "#dialog-link" ).click(function( event ) {
+				$( "#dialog" ).dialog( "open" );
+				event.preventDefault();
+			});
+			
+			// Hover states on the static widgets
+			$( "#dialog-link, #icons li" ).hover(
+				function() {
+					$( this ).addClass( "ui-state-hover" );
+				},
+				function() {
+					$( this ).removeClass( "ui-state-hover" );
+				}
+			);
+	</script>
+</body>
+</html>
+
